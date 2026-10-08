@@ -1,9 +1,9 @@
-# 02 — Requirements Tracker
+# 02 - Requirements Tracker
 
 Living tracker for the course report. Status values: **Draft** (written, not
 reviewed) → **Agreed** (team review done) → **Building** (in a milestone) →
-**Done** (shipped + verified). Requirement IDs are stable once assigned —
-never renumber; drop a row by marking it `Dropped` with a reason.
+**Done** (shipped + verified). Requirement IDs are stable once assigned,
+never renumbered; drop a row by marking it `Dropped` with a reason.
 
 # Functional Requirements
 
@@ -56,8 +56,8 @@ never renumber; drop a row by marking it `Dropped` with a reason.
 | :-: | --- | :-: |
 | SR-01 | The system is a static React-Native-for-Web bundle plus serverless functions on one origin (no CORS) | Draft |
 | SR-02 | The API tier forwards game-API calls through the RoyaleAPI proxy with per-endpoint TTL caching | Draft |
-| SR-03 | The API tier maps upstream errors to a documented JSON error contract (04 §"Error contract") | Draft |
+| SR-03 | The API tier maps upstream errors to a documented JSON error contract ([04 §"Error contract"](./04-api-strategy.md)) | Draft |
 | SR-04 | Analysis engines are pure TypeScript modules with no framework or network imports | Draft |
-| SR-05 | Routing uses React Router with a documented URL map (03 §"Screens & URLs") | Draft |
+| SR-05 | Routing uses React Router with a documented URL map ([03 §"Screens & URLs"](./03-features-list.md)) | Draft |
 | SR-06 | CI runs on every PR via GitHub Actions; `main` is always deployable and auto-deploys | Draft |
 | SR-07 | Test fixtures are anonymized copies of game-API payloads stored under version control | Draft |

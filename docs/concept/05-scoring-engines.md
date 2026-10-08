@@ -1,11 +1,11 @@
-# 05 — Scoring Engines
+# 05 - Scoring Engines
 
-The engines are the product's reason to exist (00 §"Product pillars" #2). They
+The engines are the product's reason to exist ([00 §"Product pillars" #2](./00-overview.md)). They
 turn raw API numbers into verdicts. Each engine is a **pure TypeScript module**:
-no React, no network, no clock — data in, judgment out. That rule is what makes
-them table-driven-testable to 90%+ coverage (NFR-07) and reusable anywhere.
+no React, no network, no clock, data in, judgment out. That rule is what makes
+them table-driven-testable to 90%+ coverage ([NFR-07](./02-requirements-tracker.md)) and reusable anywhere.
 
-All engines run **client-side** (01 §"The analysis boundary"), consuming the
+All engines run **client-side** ([01 §"The analysis boundary"](./01-tech-stack.md)), consuming the
 JSON our API tier already fetched.
 
 ## 1. Rushed analysis (the flagship)
@@ -15,13 +15,13 @@ Town Hall badge?"
 
 **Input:** the player payload's unit arrays. Each unit arrives as
 `{ name, level, maxLevel, village }` where `maxLevel` is the unit's **global
-maximum** as reported by the API itself — no reference tables for us to
+maximum** as reported by the API itself, no reference tables for us to
 maintain.
 
 **Normalization (the part that makes it honest):**
 
 - *Super troops lie.* A super troop is a temporary boosted variant of a regular
-  troop, and the API reports it on the variant's own scale — a player with a
+  troop, and the API reports it on the variant's own scale, a player with a
   level-8 Valkyrie who activates Super Valkyrie suddenly shows "Super Valkyrie
   1/12", which reads as an 11-level deficit that does not exist. Before
   analysis, every super troop entry is mapped back to its base troop so the
@@ -67,8 +67,8 @@ with equal weights (`w_i = 1`) initially; hero weights can be raised later
 without touching the formula's shape.
 
 **Output:** overall percentage; per-category percentage; units counted vs
-maxed; the top-N largest deficits ("what to upgrade next" — which is UR-03
-answered literally).
+maxed; the top-N largest deficits ("what to upgrade next", which answers
+[UR-03](./02-requirements-tracker.md) literally).
 
 **Edge cases:** units with a null `maxLevel` (brand-new content) are excluded
 and counted in a "new content skipped" footnote; a payload with zero usable
@@ -79,20 +79,20 @@ units returns `null` ("not available") rather than 0.
 
 ## 2. Donation balance
 
-**Question:** "Who takes but never gives?" (UR-02)
+**Question:** "Who takes but never gives?" ([UR-02](./02-requirements-tracker.md))
 
-**Input:** a clan's `memberList` — every member carries lifetime-season
+**Input:** a clan's `memberList`, every member carries lifetime-season
 `donations` and `donationsReceived`.
 
 **Mechanics:**
 
 - `ratio = given / max(received, 1)`, displayed `given : received`.
 - Target ratio `R` (default 1.0, adjustable client-side with instant
-  re-computation — the engine is local, so no refetch).
+  re-computation, the engine is local, so no refetch).
 - A member is **flagged** when `given < R × received` and `received` exceeds a
   noise floor (new members with tiny counters are not public shamed).
-- Ranking = deficit `R × received − given`, worst first — the "needs attention"
-  ordering on the roster (F-05).
+- Ranking = deficit `R × received − given`, worst first, the "needs attention"
+  ordering on the roster ([F-05](./03-features-list.md)).
 - Clan-level health = share of members at-or-above target, shown as one chip
   on the clan header.
 
@@ -113,7 +113,7 @@ both zero is *no data*, displayed as a dash, never as a red flag.
 
 **From the current war (per member):**
 
-- attacks used vs allowed (participation — UR-04);
+- attacks used vs allowed (participation, UR-04);
 - stars and average destruction per used attack (impact);
 - roster table ordered by impact among participants, non-participants listed
   after.
@@ -124,8 +124,8 @@ over-reads a 3-war window.
 
 ## 4. Compare mode
 
-**Question:** "Who's more rushed, you or me?" — the demo moment (00 §"Who it
-is for").
+**Question:** "Who's more rushed, you or me?" The demo moment
+([00 §"Who it is for"](./00-overview.md)).
 
 **Mechanics:** for each metric in the union of both profiles, render a row
 with both values, the delta, and a direction color (better/worse). Player
@@ -133,17 +133,17 @@ compare: TH, rushed % overall + per category, hero levels, key achievements,
 war stats. Clan compare: size, level, war record, average TH, donation health.
 
 **Deliberate limitation:** per-metric verdicts only, **no single overall
-"winner" number** — summing unlike units into one score is false precision
+"winner" number**, summing unlike units into one score is false precision
 and we will not ship it.
 
 ## 5. Testing strategy
 
-- Every engine gets **table-driven unit tests** over `fixtures/` — anonymized
-  copies of real payloads (SR-07), including deliberately weird ones: a fully
+- Every engine gets **table-driven unit tests** over `fixtures/`, anonymized
+  copies of real payloads ([SR-07](./02-requirements-tracker.md)), including deliberately weird ones: a fully
   maxed account (expect 0%), a fresh TH-limited account, super troops active,
   null `maxLevel` fields, zero-donation rosters.
 - Property checks where cheap: rushed % always ∈ [0, 100]; the super-troop map
   is total over the fixture set; donation flags never fire below the noise
   floor.
 - Engines may not import React, the router, the API client, or each other's
-  internals — enforced by a lint boundary rule, kept honest by CI (NFR-08).
+  internals, enforced by a lint boundary rule, kept honest by CI ([NFR-08](./02-requirements-tracker.md)).

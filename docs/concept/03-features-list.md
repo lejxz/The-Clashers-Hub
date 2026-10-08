@@ -1,15 +1,15 @@
-# 03 — Features List
+# 03 - Features List
 
 Priorities: **P0** = the MVP (must ship), **P1** = should ship, **P2** =
-stretch — cut without guilt when the semester compresses. Requirement IDs
-cross-reference the tracker in 02.
+stretch, cut without guilt when the semester compresses. Requirement IDs
+cross-reference the tracker in [02](./02-requirements-tracker.md).
 
 ## 1. Feature table
 
 | ID | Feature | Priority | Req | Notes |
 |---|---|---|---|---|
 | F-01 | Clan search: name + filters (min members, min clan level, war frequency, location) | P0 | FR-01 | filters are optional; empty name = browse top clans |
-| F-02 | Search results: virtualized card list — badge, level, members, location, war frequency; cursor pagination | P0 | FR-01 | |
+| F-02 | Search results: virtualized card list, badge, level, members, location, war frequency; cursor pagination | P0 | FR-01 | |
 | F-03 | Tag lookup: paste-a-tag box on the home screen (accepts `#ABC123` or `ABC123`, normalized) | P0 | FR-02 | the only way to reach a player without a clan |
 | F-04 | Clan detail: header + stats + roster | P0 | FR-03 | tabs: Roster / War / Log |
 | F-05 | Roster table: sortable, tap-through to player; donation flags inline; "needs attention" sort toggle | P0 | FR-04, FR-05 | switches to cards below 768px |
@@ -21,12 +21,12 @@ cross-reference the tracker in 02.
 | F-11 | Compare: clan vs clan | P1 | FR-13 | roster stats + war record |
 | F-12 | Shareable URLs everywhere | P0 | FR-14 | free with React Router; tag encoding handled |
 | F-13 | Recent searches (local storage) | P1 | FR-15 | |
-| F-14 | Favorites / watchlist (local storage) | P2 | — | see 06 §"Storage ladder" |
-| F-15 | Legend & seasonal stats panels | P2 | — | only meaningful for top-tier players |
-| F-16 | Clan capital raids view | P2 | — | extra endpoint, low analytic value |
+| F-14 | Favorites / watchlist (local storage) | P2 | | see [06 §"Storage ladder"](./06-data-flow-and-caching.md) |
+| F-15 | Legend & seasonal stats panels | P2 | | only meaningful for top-tier players |
+| F-16 | Clan capital raids view | P2 | | extra endpoint, low analytic value |
 
 **Cut line for a compressed semester:** F-10, F-11, F-13 go before anything P0
-touches. F-08/F-09 are one milestone together — war views either both ship or
+touches. F-08/F-09 are one milestone together, war views either both ship or
 neither does.
 
 ## 2. Screens & URLs
@@ -41,26 +41,27 @@ neither does.
 
 Notes on tags: game tags start with `#` and are URL-encoded as `%23`; the
 router and the `TagInput` component own normalization (uppercase, prepend `#`)
-in exactly one place each — never scattered.
+in exactly one place each, never scattered.
 
 ## 3. The two golden paths
 
 These are the flows that must never break; every demo and every smoke test
 walks them.
 
-**Golden path A — the clan-first journey:**
+**Golden path A, the clan-first journey:**
 search a clan name → results list → clan detail → roster with donation flags →
 tap a member → player detail with rushed analysis → back to roster (scroll
 position preserved).
 
-**Golden path B — the tag shortcut:**
+**Golden path B, the tag shortcut:**
 paste a player tag on `/` → player detail directly → compare with a second tag
 (P1).
 
 ## 4. Screen inventory (what each screen must design)
 
-Every screen specifies four states before it is considered designed (see 06
-§"State matrix"): loading (skeleton), error (upstream busy / not found), empty
+Every screen specifies four states before it is considered designed (see
+[06 §"State matrix"](./06-data-flow-and-caching.md)): loading (skeleton),
+error (upstream busy / not found), empty
 (no results / private war log), and success.
 
 - **Search:** bar + filters + results; handles "no results" with relaxed-filter

@@ -1,17 +1,17 @@
-# The Clashers Hub — Concept Documentation
+# The Clashers Hub: Concept Documentation
 
 This folder is the project's source of truth for **what we build and why**,
 written before and alongside the code. Change a decision here first, then
-change the code — a PR that changes behavior without changing the matching
-doc here is incomplete (08 §"Definition of done" #5).
+change the code; a PR that changes behavior without changing the matching
+doc here is incomplete ([08 §"Definition of done" #5](./08-roadmap.md)).
 
 ## Reading order
 
 | # | Document | Answers |
 |---|---|---|
 | 00 | [Overview](./00-overview.md) | What the product is, who it's for, what is explicitly out of scope |
-| 01 | [Tech stack](./01-tech-stack.md) | React Native for Web + Vite + a thin serverless API tier — all free |
-| 02 | [Requirements tracker](./02-requirements-tracker.md) | FR / NFR / UR / SR tables with status — the course-report backbone |
+| 01 | [Tech stack](./01-tech-stack.md) | React Native for Web + Vite + a thin serverless API tier, all free |
+| 02 | [Requirements tracker](./02-requirements-tracker.md) | FR / NFR / UR / SR tables with status, the course-report backbone |
 | 03 | [Features list](./03-features-list.md) | Prioritized features, screens, URL map, the two golden paths |
 | 04 | [API strategy](./04-api-strategy.md) | Talking to the game API safely: proxy, caching, throttling, key hygiene |
 | 05 | [Scoring engines](./05-scoring-engines.md) | The math: rushed analysis, donation balance, war efficiency, compare |
@@ -21,9 +21,8 @@ doc here is incomplete (08 §"Definition of done" #5).
 
 ## Conventions
 
-- Every doc states a **decision and its rationale** — never just the choice.
-- Priorities: **P0** must ship · **P1** should ship · **P2** stretch, cut
+- Every doc states a **decision and its rationale**, never just the choice.
+- Priorities: **P0** must ship, **P1** should ship, **P2** stretch, cut
   without guilt.
-- Requirement IDs (02) and feature IDs (03) are stable once assigned.
-- Status: this folder is **Draft for team review** — comment in PRs, edit
-  freely, keep the numbering.
+- Requirement IDs ([02](./02-requirements-tracker.md)) and feature IDs
+  ([03](./03-features-list.md)) are stable once assigned; keep the numbering.
