@@ -2,8 +2,8 @@
 
 **Project:** The Clashers Hub
 **Form:** a web application built with React Native for Web
-**Team:** four developers, one semester
-**Budget:** free tiers only — see 01 §"Free-tier budget"
+**Team:** Threedevelopers, one semester
+**Budget:** free tier Vercel server.
 
 ## 1. The pitch
 
