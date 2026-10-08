@@ -5,6 +5,12 @@ reviewed) → **Agreed** (team review done) → **Building** (in a milestone) �
 **Done** (shipped + verified). Requirement IDs are stable once assigned,
 never renumbered; drop a row by marking it `Dropped` with a reason.
 
+Session 7 snapshot: [requirements.md](../../requirements.md) at the repo
+root holds the complete lab-structure specification (stakeholders SH,
+acceptance criteria AC, constraints CON, assumptions ASM, detail system
+requirements SR-08 to SR-15, and the KanbanFlow task breakdown). Status
+lives here; the spec of record lives there.
+
 # Functional Requirements
 
 | ID | Details | Status |

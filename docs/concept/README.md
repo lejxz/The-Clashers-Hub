@@ -19,6 +19,9 @@ doc here is incomplete ([08 §"Definition of done" #5](./08-roadmap.md)).
 | 07 | [Design language](./07-design-language.md) | Tokens, layout rules, component kit, accessibility |
 | 08 | [Roadmap](./08-roadmap.md) | Milestones, team split, risk register, definition of done |
 
+Session 7 requirements specification (lab structure plus the KanbanFlow
+task breakdown): [requirements.md](../../requirements.md) at the repo root.
+
 ## Conventions
 
 - Every doc states a **decision and its rationale**, never just the choice.
