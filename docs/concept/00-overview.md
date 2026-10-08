@@ -64,28 +64,22 @@ We build for ourselves first: every teammate plays the game and is user #1.
 search, clan detail, player detail, war views, compare. Analysis engines that
 run in the browser.
 
-**Non-goals (explicit, agreed):**
+**Non-goals:**
 
 - **Not a tracker.** We do not accumulate history over time, so there is no
   scheduled polling, no snapshot database, and no ops burden. The live API is
   our database.
 - **No accounts.** No sign-up, no auth, no user data. Saved tags live in the
   browser's local storage only (see 06 §"Storage ladder").
-- **No native mobile app.** This is a web project — React Native rendered to
-  the browser, responsive down to phone width. No app stores.
 - **No write access to the game.** The official API is read-only anyway; we
   never pretend otherwise.
 
 ## 6. Constraints we treat as design principles
 
-- **Free tiers only.** Hosting, CI, and the game API cost nothing (01 §"Free-tier
-  budget"). Anything that would require a paid plan is out of scope by design.
+- **Free tiers only.** Hosting, CI, and the game API cost nothing. Anything that would require a paid plan is out of scope by design.
 - **The game API is throttled and key-gated.** Every upstream request we make
   goes through a server-side cache with a TTL (04, 06). The app never talks to
   the game API directly, and the key never ships to the browser.
-- **One semester, four people, part-time.** Scope is capped at four analysis
-  engines and roughly seven screens (03, 08). The roadmap has a hard cut line
-  for stretch features.
 
 ## 7. What success looks like
 
@@ -96,5 +90,4 @@ run in the browser.
 - Every profile and clan page is reachable by a pasteable URL.
 - The deployed site runs on a free URL; the repo clones and runs locally in
   under ten minutes with two environment variables.
-- The concept folder documents every major decision and its rationale — this
-  folder is the coursework's paper trail.
+
