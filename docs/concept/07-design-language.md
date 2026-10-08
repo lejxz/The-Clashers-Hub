@@ -7,33 +7,14 @@ too.
 
 ## 1. Feel
 
-**A dark scoreboard.** Clash of Clans is a game of gold and trophies, but a
-data tool should be quiet: a near-black canvas, panels that float on it, one
+Clash of Clans is a game of gold and trophies, but a
+data tool should be quiet simple clash of clans inspired: a white/black mode canvas, panels that float on it, one
 gold accent used sparingly for the things that matter (numbers, verdicts,
 focus). Dense but never noisy — micro-labels whisper, values speak.
 
 ## 2. Tokens (the only allowed values)
 
-| Token | Value | Used for |
-|---|---|---|
-| `color/bg` | `#0C1017` | app background |
-| `color/panel` | `#151B26` | cards, tables, sheets |
-| `color/line` | `#232B3A` | hairline borders (1px) |
-| `color/text` | `#E7ECF4` | primary text |
-| `color/muted` | `#8B94A7` | secondary text, micro-labels |
-| `color/accent` | `#E4B34A` | gold — key values, focus ring, links |
-| `color/good` | `#3FB984` | positive deltas, "at target", win chips |
-| `color/warn` | `#E0653A` | flags, negative deltas, loss chips |
-| `color/info` | `#5AA7E8` | neutral highlights, tie chips, war state |
-| spacing scale | `4 8 12 16 24 32` | the only gaps |
-| radius | `10` cards / `999` chips & pills | |
-| font | Inter (system fallback) + a mono for numerics | `font-variant: tabular-nums` everywhere numbers align |
-
-Type scale: display 28/700 · title 18/600 · body 14/400 · micro-label 11 mono
-UPPERCASE +tracking (used for column headers, chip labels, stat captions).
-
-All tokens live in one `tokens.ts` exported object; no literal colors in
-components (CI greps for hex literals in `src/components`).
+TBD
 
 ## 3. Layout
 

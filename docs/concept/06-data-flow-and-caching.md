@@ -88,9 +88,7 @@ each rung is independently cuttable:
 1. **localStorage** (P1, ships by default): recent searches, and favorites if
    F-14 survives. Nothing but tags the user typed or starred; no personal
    data; clears with browser data.
-2. **IndexedDB** (P2): larger local caches (war-log snapshots for
-   offline-ish browsing). Only if a concrete need appears.
-3. **Hosted Postgres free tier** (only under explicit course requirement):
+2. **Hosted Supabase free tier** (only under explicit course requirement):
    a single `watchlist` table keyed by an anonymous device ID. The engines
    never read it; it only remembers tags. If this rung activates, it gets its
    own concept doc before any code.
@@ -103,6 +101,6 @@ that demands scheduled jobs (cron, pollers) is out of bounds for this project
 
 - We display public game data about game accounts — the same data the game
   itself shows any clan visitor.
-- No accounts, no cookies, no analytics on users (00 §"Non-goals").
+- No accounts, no cookies, no analytics on users.
 - localStorage holds only game tags the user typed or starred (06 §5).
 - Fixtures in the repo are anonymized: real structure, placeholder names.

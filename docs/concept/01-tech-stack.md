@@ -23,13 +23,7 @@ This gives us one component paradigm (Flexbox layout, `View`/`Text`/
 `StyleSheet`, RN accessibility props mapping to ARIA on web) while shipping a
 normal static site at the end.
 
-Two deliberate exclusions:
-
-- **No Expo.** Expo is the right call when you target native iOS/Android builds.
-  We ship to browsers only, so we skip the native toolchain, app-store
-  packaging, and EAS entirely. Our toolchain is Vite + `react-native-web` and
-  nothing else. (If the team ever wants native builds later, the UI code is
-  already in the RN paradigm — that is the insurance, not the plan.)
+Deliberate exclusions:
 - **No DOM-only libraries in the UI layer.** Anything that emits raw HTML (`div`,
   `innerHTML`, DOM chart libs) breaks the "written in React Native" story and
   the portability insurance above. The one sanctioned exception is the router's
@@ -73,7 +67,7 @@ Two boundaries matter:
 | GitHub Actions | public repo | free minutes | CI on every PR |
 | Clash of Clans API | free developer key | per-key throttling (rates unpublished) | TTL cache keeps us far below any plausible cap (04 §"Throttle math") |
 | RoyaleAPI proxy | free community service | fair use | all upstream traffic |
-| Database | **none** | — | by decision (06 §"The no-database decision") |
+| Database | **none** | — | by decision (06 §"No-database decision") |
 
 If any component approaches a cap, the answer is more caching or less
 scope — never a credit card.
