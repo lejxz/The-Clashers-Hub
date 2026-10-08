@@ -70,7 +70,7 @@ run in the browser.
   scheduled polling, no snapshot database, and no ops burden. The live API is
   our database.
 - **No accounts.** No sign-up, no auth, no user data. Saved tags live in the
-  browser's local storage only (see [06 §"Storage ladder"](./06-data-flow-and-caching.md)).
+  browser's local storage only (see [06 "Storage"](./06-data-flow-and-caching.md)).
 - **No write access to the game.** The official API is read-only anyway; we
   never pretend otherwise.
 
